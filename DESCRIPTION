@@ -1,0 +1,17 @@
+Package: bz
+Type: Package
+Title: bio Zhu's miscellaneous R functions
+Version: 11.9
+Date: 2017-11-09
+Author: Jerry Zhu <jerryzhujian9@gmail.com>
+Maintainer: Jerry Zhu <jerryzhujian9@gmail.com>
+Description: This package represents an attempt to consolidate R codes for
+    bioinformatics, neuroinformatics, imaging genetics, genetics analyses.
+License: GNU3
+Encoding: UTF-8
+LazyData: true
+Imports:
+    devtools,
+    roxygen2,
+    ezmisc
+RoxygenNote: 5.0.1
