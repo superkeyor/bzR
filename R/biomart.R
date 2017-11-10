@@ -52,6 +52,21 @@ mart.snp = function(host=NULL, biomart="snp", dataset="hsapiens_snp", ...) {
     return(biomaRt::useEnsembl(biomart=biomart, dataset=dataset, host=host, ...))
 }
 
+#' retrieve human snp info from ensembl
+#' @param values rs number, eg, 'rs2075507'
+#' @param filters 'snp_filter'
+#' @param attributes c('refsnp_id','chr_name','chrom_start','chrom_end','allele',
+#'        'allele_1','minor_allele','minor_allele_freq','synonym_name')
+#' @param host default 'www.ensembl.org'. Other eg, 'grch37.ensembl.org', 'May2017.archive.ensembl.org'. See all, run \code{\link{mart.list}}
+#' @return returns a data frame
+#' @export
+mart.snpinfo = function(values,filters='snp_filter',attributes=c('refsnp_id','chr_name','chrom_start','chrom_end','allele',
+        'allele_1','minor_allele','minor_allele_freq','synonym_name'),host=NULL) {
+    if (is.null(host)) {host='www.ensembl.org'}
+    rs <- biomaRt::getBM(attributes=attributes, filters=filters, values=values, mart=mart.snp(host=host))
+    return(rs)
+}
+
 #' return a mart object representing ensembl:hsapiens_gene_ensembl
 #' @param host default 'www.ensembl.org'. Other eg, 'grch37.ensembl.org', 'May2017.archive.ensembl.org'. See all, run \code{\link{mart.list}}
 #' @export
