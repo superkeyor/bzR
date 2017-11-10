@@ -11,6 +11,9 @@ mart.list(what = "snp", host = NULL, ...)
 
 \item{host}{default 'www.ensembl.org'. Other eg, 'grch37.ensembl.org', 'May2017.archive.ensembl.org'. See all, run \code{\link{mart.list}}}
 }
+\value{
+view in RStudio
+}
 \description{
 Lists available archived versions of Ensembl (hosts), marts, snp attributes/filters, gene attributes/filters
 }
