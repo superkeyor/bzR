@@ -10,7 +10,7 @@ mart.list <- function(what='snp',host=NULL,...) {
     if (is.null(host)) {host='www.ensembl.org'}
 
     if (what=='hosts') {
-        # code of listEnsemblArchives from bioMart v2.34 (not available in v2.30)
+        # modified codes from listEnsemblArchives from bioMart v2.34 (not available in v2.30)
         html <- XML::htmlParse("http://www.ensembl.org/info/website/archives/index.html")
         archive_box <- XML::getNodeSet(html, path = "//div[@class='plain-box float-right archive-box']")[[1]]
         archive_box_string <- XML::toString.XMLNode(archive_box)
