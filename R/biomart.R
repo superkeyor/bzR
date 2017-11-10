@@ -58,6 +58,10 @@ mart.snp = function(host=NULL, biomart="snp", dataset="hsapiens_snp", ...) {
 #' @param attributes what to return
 #' @param host default 'www.ensembl.org'. Other eg, 'grch37.ensembl.org', 'May2017.archive.ensembl.org'. See all, run \code{\link{mart.list}}
 #' @return returns a data frame
+#' @note
+#' In case multple filters are in use, the values argument requires a list of values where each position in the list corresponds to the position of the filters in the filters argument
+#' filters=c("chr_name","start","end"),
+#' values=list(8,148350, 158612),
 #' @export
 mart.snpinfo = function(values,filters='snp_filter',attributes=c('refsnp_id','chr_name','chrom_start','chrom_end','allele',
         'allele_1','minor_allele','minor_allele_freq','synonym_name','ensembl_gene_stable_id'),host=NULL) {

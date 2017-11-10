@@ -29,4 +29,9 @@ returns a data frame
 \description{
 retrieve human snp info from ensembl
 }
+\note{
+In case multple filters are in use, the values argument requires a list of values where each position in the list corresponds to the position of the filters in the filters argument
+filters=c("chr_name","start","end"),
+values=list(8,148350, 158612),
+}
 
