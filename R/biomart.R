@@ -53,15 +53,14 @@ mart.snp = function(host=NULL, biomart="snp", dataset="hsapiens_snp", ...) {
 }
 
 #' retrieve human snp info from ensembl
-#' @param values rs number, eg, 'rs2075507'
-#' @param filters 'snp_filter'
-#' @param attributes c('refsnp_id','chr_name','chrom_start','chrom_end','allele',
-#'        'allele_1','minor_allele','minor_allele_freq','synonym_name')
+#' @param values  the actual input data values, rs number, eg, 'rs2075507', cannot be synonymous rs number
+#' @param filters the kind/type of your input data, eg, 'snp_filter'
+#' @param attributes what to return
 #' @param host default 'www.ensembl.org'. Other eg, 'grch37.ensembl.org', 'May2017.archive.ensembl.org'. See all, run \code{\link{mart.list}}
 #' @return returns a data frame
 #' @export
 mart.snpinfo = function(values,filters='snp_filter',attributes=c('refsnp_id','chr_name','chrom_start','chrom_end','allele',
-        'allele_1','minor_allele','minor_allele_freq','synonym_name'),host=NULL) {
+        'allele_1','minor_allele','minor_allele_freq','synonym_name','ensembl_gene_stable_id'),host=NULL) {
     if (is.null(host)) {host='www.ensembl.org'}
     rs <- biomaRt::getBM(attributes=attributes, filters=filters, values=values, mart=mart.snp(host=host))
     return(rs)

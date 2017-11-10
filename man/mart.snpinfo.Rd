@@ -6,15 +6,14 @@
 \usage{
 mart.snpinfo(values, filters = "snp_filter", attributes = c("refsnp_id",
   "chr_name", "chrom_start", "chrom_end", "allele", "allele_1", "minor_allele",
-  "minor_allele_freq", "synonym_name"), host = NULL)
+  "minor_allele_freq", "synonym_name", "ensembl_gene_stable_id"), host = NULL)
 }
 \arguments{
-\item{values}{rs number, eg, 'rs2075507'}
+\item{values}{the actual input data values, rs number, eg, 'rs2075507', cannot be synonymous rs number}
 
-\item{filters}{'snp_filter'}
+\item{filters}{the kind/type of your input data, eg, 'snp_filter'}
 
-\item{attributes}{c('refsnp_id','chr_name','chrom_start','chrom_end','allele',
-'allele_1','minor_allele','minor_allele_freq','synonym_name')}
+\item{attributes}{what to return}
 
 \item{host}{default 'www.ensembl.org'. Other eg, 'grch37.ensembl.org', 'May2017.archive.ensembl.org'. See all, run \code{\link{mart.list}}}
 }
