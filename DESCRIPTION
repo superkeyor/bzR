@@ -11,5 +11,5 @@ License: GNU3
 Encoding: UTF-8
 LazyData: true
 Imports:
-    devtools,roxygen2,ezmisc,biomaRt
+    devtools,roxygen2,ezmisc
 RoxygenNote: 5.0.1
