@@ -53,7 +53,7 @@ mart.snp = function(host=NULL, biomart="snp", dataset="hsapiens_snp", ...) {
 }
 
 #' retrieve human snp info from ensembl
-#' @param values  the actual input data values, rs number, eg, 'rs2075507', cannot be synonymous rs number
+#' @param values  the actual input data values, rs number, eg, 'rs2075507', can NOT be synonymous rs number (returns empty)
 #' @param filters the kind/type of your input data, eg, 'snp_filter'
 #' @param attributes what to return
 #' @param host default 'www.ensembl.org'. Other eg, 'grch37.ensembl.org', 'May2017.archive.ensembl.org'. See all, run \code{\link{mart.list}}

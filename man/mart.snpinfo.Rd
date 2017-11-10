@@ -9,7 +9,7 @@ mart.snpinfo(values, filters = "snp_filter", attributes = c("refsnp_id",
   "minor_allele_freq", "synonym_name", "ensembl_gene_stable_id"), host = NULL)
 }
 \arguments{
-\item{values}{the actual input data values, rs number, eg, 'rs2075507', cannot be synonymous rs number}
+\item{values}{the actual input data values, rs number, eg, 'rs2075507', can NOT be synonymous rs number (returns empty)}
 
 \item{filters}{the kind/type of your input data, eg, 'snp_filter'}
 
