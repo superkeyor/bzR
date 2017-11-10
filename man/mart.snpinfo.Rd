@@ -5,21 +5,22 @@
 \alias{mart.snpinfo2}
 \title{retrieve human snp info from ensembl}
 \usage{
-mart.snpinfo(values, filters = "snp_filter", attributes = c("refsnp_id",
-  "chr_name", "chrom_start", "chrom_end", "allele", "allele_1", "minor_allele",
-  "minor_allele_freq", "synonym_name", "ensembl_gene_stable_id"), host = NULL)
+mart.snpinfo(values = c("rs2075507", "rs547420070", "rs77274555"),
+  filters = "snp_filter", attributes = c("refsnp_id", "chr_name",
+  "chrom_start", "chrom_end", "allele", "allele_1", "minor_allele",
+  "minor_allele_freq", "ensembl_gene_stable_id"), host = NULL)
 
-mart.snpinfo2(values, filters = "snp_synonym_filter",
-  attributes = c("refsnp_id", "chr_name", "chrom_start", "chrom_end",
-  "allele", "allele_1", "minor_allele", "minor_allele_freq", "synonym_name",
-  "ensembl_gene_stable_id"), host = NULL)
+mart.snpinfo2(values = c("rs2075507", "rs547420070", "rs77274555"),
+  filters = "snp_synonym_filter", attributes = c("refsnp_id", "chr_name",
+  "chrom_start", "chrom_end", "allele", "allele_1", "minor_allele",
+  "minor_allele_freq", "ensembl_gene_stable_id"), host = NULL)
 }
 \arguments{
-\item{values}{the actual input data values, rs number, eg, 'rs2075507', c('rs547420070', 'rs77274555'); to search archived synonymous rs number, use mart.snpinfo2}
+\item{values}{the actual input data values, rs number, eg, 'rs2075507', c('rs2075507', 'rs547420070', 'rs77274555'); to search archived synonymous rs number, use mart.snpinfo2}
 
 \item{filters}{the kind/type of your input data}
 
-\item{attributes}{what to return}
+\item{attributes}{what to return, eg, 'synonym_name'}
 
 \item{host}{default 'www.ensembl.org'. Other eg, 'grch37.ensembl.org', 'May2017.archive.ensembl.org'. See all, run \code{\link{mart.list}}}
 }

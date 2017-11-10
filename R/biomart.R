@@ -53,9 +53,9 @@ mart.snp = function(host=NULL, biomart="snp", dataset="hsapiens_snp", ...) {
 }
 
 #' retrieve human snp info from ensembl
-#' @param values  the actual input data values, rs number, eg, 'rs2075507', c('rs547420070', 'rs77274555'); to search archived synonymous rs number, use mart.snpinfo2
+#' @param values  the actual input data values, rs number, eg, 'rs2075507', c('rs2075507', 'rs547420070', 'rs77274555'); to search archived synonymous rs number, use mart.snpinfo2
 #' @param filters the kind/type of your input data
-#' @param attributes what to return
+#' @param attributes what to return, eg, 'synonym_name'
 #' @param host default 'www.ensembl.org'. Other eg, 'grch37.ensembl.org', 'May2017.archive.ensembl.org'. See all, run \code{\link{mart.list}}
 #' @return returns a data frame
 #' @note
@@ -63,8 +63,8 @@ mart.snp = function(host=NULL, biomart="snp", dataset="hsapiens_snp", ...) {
 #' \cr filters=c("chr_name","start","end")
 #' \cr values=list(8,148350, 158612)
 #' @export
-mart.snpinfo = function(values,filters='snp_filter',attributes=c('refsnp_id','chr_name','chrom_start','chrom_end','allele',
-        'allele_1','minor_allele','minor_allele_freq','synonym_name','ensembl_gene_stable_id'),host=NULL) {
+mart.snpinfo = function(values=c('rs2075507', 'rs547420070', 'rs77274555'),filters='snp_filter',attributes=c('refsnp_id','chr_name','chrom_start','chrom_end','allele',
+        'allele_1','minor_allele','minor_allele_freq','ensembl_gene_stable_id'),host=NULL) {
     if (is.null(host)) {host='www.ensembl.org'}
     rs <- biomaRt::getBM(attributes=attributes, filters=filters, values=values, mart=mart.snp(host=host))
     
@@ -86,14 +86,14 @@ mart.snpinfo = function(values,filters='snp_filter',attributes=c('refsnp_id','ch
             rs[attributes]=''
         }
     }
-    
+
     return(rs)
 }
 
 #' @rdname mart.snpinfo
 #' @export
-mart.snpinfo2 = function(values,filters='snp_synonym_filter',attributes=c('refsnp_id','chr_name','chrom_start','chrom_end','allele',
-        'allele_1','minor_allele','minor_allele_freq','synonym_name','ensembl_gene_stable_id'),host=NULL) {
+mart.snpinfo2 = function(values=c('rs2075507', 'rs547420070', 'rs77274555'),filters='snp_synonym_filter',attributes=c('refsnp_id','chr_name','chrom_start','chrom_end','allele',
+        'allele_1','minor_allele','minor_allele_freq','ensembl_gene_stable_id'),host=NULL) {
     if (is.null(host)) {host='www.ensembl.org'}
     rs <- biomaRt::getBM(attributes=attributes, filters=filters, values=values, mart=mart.snp(host=host))
     
@@ -130,8 +130,8 @@ mart.gene = function(host=NULL, biomart="ensembl", dataset="hsapiens_gene_ensemb
 #' retrieve human gene info from ensembl
 #' @param values  the actual input data values, ensembl_gene_id, ENSG00000118473, c('ENSG00000118473', 'ENSG00000162426')
 #' @param filters the kind/type of your input data
-#' @param attributes what to return, max=3(?), otherwise, Too many attributes selected for External References
-#' \cr "hgnc_id","entrezgene","kegg_enzyme","go_id","ucsc"
+#' @param attributes what to return, max eternal=3(?), otherwise, Too many attributes selected for External References
+#' \cr "hgnc_id"(HGNC:25412),"entrezgene" (84251),"kegg_enzyme","go_id"(GO:0030122),"ucsc"(uc057hhx.1) 
 #' @param host default 'www.ensembl.org'. Other eg, 'grch37.ensembl.org', 'May2017.archive.ensembl.org'. See all, run \code{\link{mart.list}}
 #' @return returns a data frame
 #' @note
@@ -139,7 +139,7 @@ mart.gene = function(host=NULL, biomart="ensembl", dataset="hsapiens_gene_ensemb
 #' \cr filters=c("chr_name","start","end")
 #' \cr values=list(8,148350, 158612)
 #' @export
-mart.geneinfo = function(values,filters='ensembl_gene_id',attributes=c("ensembl_gene_id","hgnc_symbol","description"),host=NULL) {
+mart.geneinfo = function(values=c('ENSG00000118473', 'ENSG00000162426'),filters='ensembl_gene_id',attributes=c("entrezgene","ucsc","hgnc_id","ensembl_gene_id","hgnc_symbol","description","chromosome_name","start_position","end_position"),host=NULL) {
   if (is.null(host)) {host='www.ensembl.org'}
   rs <- biomaRt::getBM(attributes=attributes, filters=filters, values=values, mart=mart.gene(host=host))
   return(rs)

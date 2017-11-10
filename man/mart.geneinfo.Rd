@@ -4,17 +4,18 @@
 \alias{mart.geneinfo}
 \title{retrieve human gene info from ensembl}
 \usage{
-mart.geneinfo(values, filters = "ensembl_gene_id",
-  attributes = c("ensembl_gene_id", "hgnc_symbol", "description"),
-  host = NULL)
+mart.geneinfo(values = c("ENSG00000118473", "ENSG00000162426"),
+  filters = "ensembl_gene_id", attributes = c("entrezgene", "ucsc",
+  "hgnc_id", "ensembl_gene_id", "hgnc_symbol", "description", "chromosome_name",
+  "start_position", "end_position"), host = NULL)
 }
 \arguments{
 \item{values}{the actual input data values, ensembl_gene_id, ENSG00000118473, c('ENSG00000118473', 'ENSG00000162426')}
 
 \item{filters}{the kind/type of your input data}
 
-\item{attributes}{what to return, max=3(?), otherwise, Too many attributes selected for External References
-\cr "hgnc_id","entrezgene","kegg_enzyme","go_id","ucsc"}
+\item{attributes}{what to return, max eternal=3(?), otherwise, Too many attributes selected for External References
+\cr "hgnc_id"(HGNC:25412),"entrezgene" (84251),"kegg_enzyme","go_id"(GO:0030122),"ucsc"(uc057hhx.1)}
 
 \item{host}{default 'www.ensembl.org'. Other eg, 'grch37.ensembl.org', 'May2017.archive.ensembl.org'. See all, run \code{\link{mart.list}}}
 }
