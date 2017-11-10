@@ -67,6 +67,26 @@ mart.snpinfo = function(values,filters='snp_filter',attributes=c('refsnp_id','ch
         'allele_1','minor_allele','minor_allele_freq','synonym_name','ensembl_gene_stable_id'),host=NULL) {
     if (is.null(host)) {host='www.ensembl.org'}
     rs <- biomaRt::getBM(attributes=attributes, filters=filters, values=values, mart=mart.snp(host=host))
+    
+    # retrieve gene names with ensembl_gene_stable_id
+    if ('ensembl_gene_stable_id' %in% colnames(rs)) {
+        # thanks to getBM(uniqueRows = TRUE),
+        # unfounded id or empty id '' in rs[['ensembl_gene_stable_id']] will be auto filtered out in rs2
+        # but if rs[['ensembl_gene_stable_id']] is all empty '', rs2 fails
+        # https://stackoverflow.com/a/46895403/2292993
+        allempty=function(x){all(is.na(x) || is.null(x) || x == "" || x == 0)}
+        values=rs[['ensembl_gene_stable_id']]
+        attributes=c("ensembl_gene_id","hgnc_symbol","description")
+        if (!allempty(values)) {
+            rs2=biomaRt::getBM(filters='ensembl_gene_id', attributes=attributes, values=values, mart=mart.gene(host=host))
+            # combine results
+            rs=dplyr::left_join(rs,rs2,by=c('ensembl_gene_stable_id'='ensembl_gene_id'))
+        } else {
+            # simply create new columns
+            rs[attributes]=''
+        }
+    }
+    
     return(rs)
 }
 
@@ -76,6 +96,26 @@ mart.snpinfo2 = function(values,filters='snp_synonym_filter',attributes=c('refsn
         'allele_1','minor_allele','minor_allele_freq','synonym_name','ensembl_gene_stable_id'),host=NULL) {
     if (is.null(host)) {host='www.ensembl.org'}
     rs <- biomaRt::getBM(attributes=attributes, filters=filters, values=values, mart=mart.snp(host=host))
+    
+    # retrieve gene names with ensembl_gene_stable_id
+    if ('ensembl_gene_stable_id' %in% colnames(rs)) {
+        # thanks to getBM(uniqueRows = TRUE),
+        # unfounded id or empty id '' in rs[['ensembl_gene_stable_id']] will be auto filtered out in rs2
+        # but if rs[['ensembl_gene_stable_id']] is all empty '', rs2 fails
+        # https://stackoverflow.com/a/46895403/2292993
+        allempty=function(x){all(is.na(x) || is.null(x) || x == "" || x == 0)}
+        values=rs[['ensembl_gene_stable_id']]
+        attributes=c("ensembl_gene_id","hgnc_symbol","description")
+        if (!allempty(values)) {
+            rs2=biomaRt::getBM(filters='ensembl_gene_id', attributes=attributes, values=values, mart=mart.gene(host=host))
+            # combine results
+            rs=dplyr::left_join(rs,rs2,by=c('ensembl_gene_stable_id'='ensembl_gene_id'))
+        } else {
+            # simply create new columns
+            rs[attributes]=''
+        }
+    }
+
     return(rs)
 }
 
