@@ -5,7 +5,6 @@
 #' Lists available archived versions of Ensembl (hosts), marts, snp attributes/filters, gene attributes/filters
 #' @param what one of 'hosts', 'marts', 'snp', 'gene'
 #' @param host default 'www.ensembl.org'. Other eg, 'grch37.ensembl.org', 'May2017.archive.ensembl.org'. See all, run \code{\link{mart.list}}
-#' @return view in RStudio
 #' @export
 mart.list <- function(what='snp',host=NULL,...) {
     if (is.null(host)) {host='www.ensembl.org'}
