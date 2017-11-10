@@ -15,9 +15,9 @@ mart.snpinfo2(values, filters = "snp_synonym_filter",
   "ensembl_gene_stable_id"), host = NULL)
 }
 \arguments{
-\item{values}{the actual input data values, rs number, eg, 'rs2075507'; to search archived synonymous rs number, use mart.snpinfo2}
+\item{values}{the actual input data values, rs number, eg, 'rs2075507', c('rs547420070', 'rs77274555'); to search archived synonymous rs number, use mart.snpinfo2}
 
-\item{filters}{the kind/type of your input data, eg, 'snp_filter'}
+\item{filters}{the kind/type of your input data}
 
 \item{attributes}{what to return}
 
@@ -30,8 +30,8 @@ returns a data frame
 retrieve human snp info from ensembl
 }
 \note{
-In case multple filters are in use, the values argument requires a list of values where each position in the list corresponds to the position of the filters in the filters argument
-filters=c("chr_name","start","end"),
-values=list(8,148350, 158612),
+In case multple filters are in use, the values argument requires a list of values where each position in the list corresponds to the position of the filters in the filters argument. eg,
+\cr filters=c("chr_name","start","end")
+\cr values=list(8,148350, 158612)
 }
 

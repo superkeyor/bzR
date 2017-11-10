@@ -53,15 +53,15 @@ mart.snp = function(host=NULL, biomart="snp", dataset="hsapiens_snp", ...) {
 }
 
 #' retrieve human snp info from ensembl
-#' @param values  the actual input data values, rs number, eg, 'rs2075507'; to search archived synonymous rs number, use mart.snpinfo2
-#' @param filters the kind/type of your input data, eg, 'snp_filter'
+#' @param values  the actual input data values, rs number, eg, 'rs2075507', c('rs547420070', 'rs77274555'); to search archived synonymous rs number, use mart.snpinfo2
+#' @param filters the kind/type of your input data
 #' @param attributes what to return
 #' @param host default 'www.ensembl.org'. Other eg, 'grch37.ensembl.org', 'May2017.archive.ensembl.org'. See all, run \code{\link{mart.list}}
 #' @return returns a data frame
 #' @note
-#' In case multple filters are in use, the values argument requires a list of values where each position in the list corresponds to the position of the filters in the filters argument
-#' filters=c("chr_name","start","end"),
-#' values=list(8,148350, 158612),
+#' In case multple filters are in use, the values argument requires a list of values where each position in the list corresponds to the position of the filters in the filters argument. eg,
+#' \cr filters=c("chr_name","start","end")
+#' \cr values=list(8,148350, 158612)
 #' @export
 mart.snpinfo = function(values,filters='snp_filter',attributes=c('refsnp_id','chr_name','chrom_start','chrom_end','allele',
         'allele_1','minor_allele','minor_allele_freq','synonym_name','ensembl_gene_stable_id'),host=NULL) {
@@ -87,3 +87,20 @@ mart.gene = function(host=NULL, biomart="ensembl", dataset="hsapiens_gene_ensemb
     return(biomaRt::useEnsembl(biomart=biomart, dataset=dataset, host=host, ...))
 }
 
+#' retrieve human gene info from ensembl
+#' @param values  the actual input data values, ensembl_gene_id, ENSG00000118473, c('ENSG00000118473', 'ENSG00000162426')
+#' @param filters the kind/type of your input data
+#' @param attributes what to return, max=3(?), otherwise, Too many attributes selected for External References
+#' \cr "hgnc_id","entrezgene","kegg_enzyme","go_id","ucsc"
+#' @param host default 'www.ensembl.org'. Other eg, 'grch37.ensembl.org', 'May2017.archive.ensembl.org'. See all, run \code{\link{mart.list}}
+#' @return returns a data frame
+#' @note
+#' In case multple filters are in use, the values argument requires a list of values where each position in the list corresponds to the position of the filters in the filters argument. eg,
+#' \cr filters=c("chr_name","start","end")
+#' \cr values=list(8,148350, 158612)
+#' @export
+mart.geneinfo = function(values,filters='ensembl_gene_id',attributes=c("ensembl_gene_id","hgnc_symbol","description"),host=NULL) {
+  if (is.null(host)) {host='www.ensembl.org'}
+  rs <- biomaRt::getBM(attributes=attributes, filters=filters, values=values, mart=mart.gene(host=host))
+  return(rs)
+}
