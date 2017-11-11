@@ -149,10 +149,6 @@ mart.geneconv = function(values=c('ENSG00000118473', 'ENSG00000162426'),filters=
 #' @param attributes to what id(s)
 #' @param host default 'www.ensembl.org'. Other eg, 'grch37.ensembl.org', 'May2017.archive.ensembl.org'. See all, run \code{\link{mart.list}}
 #' @return returns a data frame
-#' @note
-#' To allow BioMart to return results in a reasonable amound of time, 
-#' Ensembl has restricted the number of External references that you can select to 3. 
-#' ensembl_gene_id-->ensembl_gene_id still works, but if the id does not exist, returns empty data frame
 #' @export
 mart.genesnps = function(values='CRHR1',filters='hgnc_symbol',attributes=c("variation_name","validated","allele","minor_allele","minor_allele_freq","transcript_count","clinical_significance","ensembl_gene_id","chromosome_name","start_position","end_position","band","external_gene_name","description"),host=NULL) {
     rs <- biomaRt::getBM(attributes=attributes, filters='hgnc_symbol', values=values, mart=mart.gene())
