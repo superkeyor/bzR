@@ -3,6 +3,7 @@
 export(bz.install)
 export(mart.gene)
 export(mart.geneinfo)
+export(mart.idconv)
 export(mart.list)
 export(mart.snp)
 export(mart.snpinfo)
