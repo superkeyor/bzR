@@ -57,8 +57,8 @@ mart.snp = function(host=NULL, biomart="snp", dataset="hsapiens_snp", ...) {
 
 #' retrieve human snp info from ensembl
 #' @param values  the actual input data values, rs number, eg, 'rs2075507', c('rs2075507', 'rs547420070', 'rs77274555'); to search archived synonymous rs number, use mart.snpinfo2
-#' @param filters the kind/type of your input data
-#' @param attributes what to return, eg, 'synonym_name'
+#' @param filters row filters in the db, the kind/type of your input data
+#' @param attributes column attributes, what to return, eg, 'synonym_name'
 #' @param host default 'www.ensembl.org'. Other eg, 'grch37.ensembl.org', 'May2017.archive.ensembl.org'. See all, run \code{\link{mart.list}}
 #' @return returns a data frame
 #' @note
@@ -113,9 +113,9 @@ mart.gene = function(host=NULL, biomart="ensembl", dataset="hsapiens_gene_ensemb
 
 #' retrieve human gene info from ensembl
 #' @param values  the actual input data values, ensembl_gene_id, ENSG00000118473, c('ENSG00000118473', 'ENSG00000162426'). If vector, should be the same id type
-#' @param filters the kind/type of your input data, 'hgnc_symbol'
+#' @param filters row filters in the db, the kind/type of your input data, 'hgnc_symbol', "ensembl_gene_id"
 #' \cr "ensembl_gene_id"(ENSG00000118473),"hgnc_id"(HGNC:25412),"entrezgene" (84251),"kegg_enzyme"(00010+1.1.1.1),"go_id"(GO:0030122),"ucsc"(uc057hhx.1) 
-#' @param attributes what to return
+#' @param attributes column attributes, what to return
 #' @param host default 'www.ensembl.org'. Other eg, 'grch37.ensembl.org', 'May2017.archive.ensembl.org'. See all, run \code{\link{mart.list}}
 #' @return returns a data frame
 #' @note
@@ -123,16 +123,16 @@ mart.gene = function(host=NULL, biomart="ensembl", dataset="hsapiens_gene_ensemb
 #' \cr filters=c("chr_name","start","end")
 #' \cr values=list(8,148350, 158612)
 #' @export
-mart.geneinfo = function(values=c('ENSG00000118473', 'ENSG00000162426'),filters="ensembl_gene_id",attributes=c("ensembl_gene_id","hgnc_symbol","description","chromosome_name","start_position","end_position"),host=NULL) {    
+mart.geneinfo = function(values=c('COMT', 'CRHR1'),filters="hgnc_symbol",attributes=c("ensembl_gene_id","hgnc_symbol","description","chromosome_name","start_position","end_position"),host=NULL) {    
     rs <- biomaRt::getBM(attributes=attributes, filters=filters, values=values, mart=mart.gene(host=host))
     return(rs)
 }
 
 #' convert from gene name to id, id to name, id to id
 #' @param values  the actual input data values, ensembl_gene_id, ENSG00000118473, c('ENSG00000118473', 'ENSG00000162426'). If vector, should be the same id type
-#' @param filters from what id, 'hgnc_symbol'
+#' @param filters row filters in the db, from what id, 'hgnc_symbol'
 #' \cr "ensembl_gene_id"(ENSG00000118473),"hgnc_id"(HGNC:25412),"entrezgene" (84251),"kegg_enzyme"(00010+1.1.1.1),"go_id"(GO:0030122),"ucsc"(uc057hhx.1) 
-#' @param attributes to what id(s), external max 3
+#' @param attributes column attributes, to what id(s), external max 3
 #' @param host default 'www.ensembl.org'. Other eg, 'grch37.ensembl.org', 'May2017.archive.ensembl.org'. See all, run \code{\link{mart.list}}
 #' @return returns a data frame
 #' @note
@@ -147,9 +147,9 @@ mart.geneconv = function(values=c('ENSG00000118473', 'ENSG00000162426'),filters=
 
 #' retrieves a gene's all snps
 #' @param values  the actual input data values, ensembl_gene_id, ENSG00000118473, c('ENSG00000118473', 'ENSG00000162426'). If vector, should be the same id type
-#' @param filters input data type, 'hgnc_symbol'
+#' @param filters row filters in the db, input data type, 'hgnc_symbol'
 #' \cr "ensembl_gene_id"(ENSG00000118473),"hgnc_id"(HGNC:25412),"entrezgene" (84251),"kegg_enzyme"(00010+1.1.1.1),"go_id"(GO:0030122),"ucsc"(uc057hhx.1) 
-#' @param attributes what to return
+#' @param attributes column attributes, what to return
 #' @param host default 'www.ensembl.org'. Other eg, 'grch37.ensembl.org', 'May2017.archive.ensembl.org'. See all, run \code{\link{mart.list}}
 #' @return returns a data frame
 #' @export

@@ -13,10 +13,10 @@ mart.genesnps(values = "CRHR1", filters = "hgnc_symbol",
 \arguments{
 \item{values}{the actual input data values, ensembl_gene_id, ENSG00000118473, c('ENSG00000118473', 'ENSG00000162426'). If vector, should be the same id type}
 
-\item{filters}{input data type, 'hgnc_symbol'
+\item{filters}{row filters in the db, input data type, 'hgnc_symbol'
 \cr "ensembl_gene_id"(ENSG00000118473),"hgnc_id"(HGNC:25412),"entrezgene" (84251),"kegg_enzyme"(00010+1.1.1.1),"go_id"(GO:0030122),"ucsc"(uc057hhx.1)}
 
-\item{attributes}{what to return}
+\item{attributes}{column attributes, what to return}
 
 \item{host}{default 'www.ensembl.org'. Other eg, 'grch37.ensembl.org', 'May2017.archive.ensembl.org'. See all, run \code{\link{mart.list}}}
 }

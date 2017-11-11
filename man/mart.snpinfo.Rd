@@ -19,9 +19,9 @@ mart.snpinfo2(values = "rs2097603", filters = "snp_synonym_filter",
 \arguments{
 \item{values}{the actual input data values, rs number, eg, 'rs2075507', c('rs2075507', 'rs547420070', 'rs77274555'); to search archived synonymous rs number, use mart.snpinfo2}
 
-\item{filters}{the kind/type of your input data}
+\item{filters}{row filters in the db, the kind/type of your input data}
 
-\item{attributes}{what to return, eg, 'synonym_name'}
+\item{attributes}{column attributes, what to return, eg, 'synonym_name'}
 
 \item{host}{default 'www.ensembl.org'. Other eg, 'grch37.ensembl.org', 'May2017.archive.ensembl.org'. See all, run \code{\link{mart.list}}}
 }
