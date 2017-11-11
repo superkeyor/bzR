@@ -72,7 +72,8 @@ mart.snpinfo = function(values=c('rs2075507', 'rs547420070', 'rs77274555'),filte
     # retrieve gene names with ensembl_gene_stable_id
     if ('ensembl_gene_stable_id' %in% colnames(rs)) {
         # getBM() values cannot be all empty (but partial empty is fine, e.g., c(‘rs123’,’’,’rs456'), 
-        # but it can give out all empty results(or nothing), 
+        # but it can give out all empty results
+        # (or nothing—but all desired column names returned as a data frame, i.e. empty data frame)
         # also by default, it removes duplicated rows when returning
         # biomaRt doesn't return anything if it cannot find it. 
         # It is designed to work just like the BioMart web services at www.biomart.org, which behave the same.
