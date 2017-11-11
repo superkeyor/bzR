@@ -12,7 +12,7 @@ mart.geneinfo(values = c("ENSG00000118473", "ENSG00000162426"),
 \arguments{
 \item{values}{the actual input data values, ensembl_gene_id, ENSG00000118473, c('ENSG00000118473', 'ENSG00000162426'). If vector, should be the same id type}
 
-\item{filters}{the kind/type of your input data
+\item{filters}{the kind/type of your input data, 'hgnc_symbol'
 \cr "ensembl_gene_id"(ENSG00000118473),"hgnc_id"(HGNC:25412),"entrezgene" (84251),"kegg_enzyme"(00010+1.1.1.1),"go_id"(GO:0030122),"ucsc"(uc057hhx.1)}
 
 \item{attributes}{what to return}

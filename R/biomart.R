@@ -1,6 +1,9 @@
 ###**************************************************.
 ###*wrapper of bioMart
 ###**************************************************.
+# overview: 
+# snpinfo() accepts rsxxxx and returns relevant info
+# geneinfo(), geneconv(), genesnps() accepts gene id, gene name, and returns relevant info
 
 #' Lists available archived versions of Ensembl (hosts), marts, snp attributes/filters, gene attributes/filters
 #' @param what one of 'hosts', 'marts', 'snp', 'gene'
@@ -63,8 +66,7 @@ mart.snp = function(host=NULL, biomart="snp", dataset="hsapiens_snp", ...) {
 #' \cr filters=c("chr_name","start","end")
 #' \cr values=list(8,148350, 158612)
 #' @export
-mart.snpinfo = function(values=c('rs2075507', 'rs547420070', 'rs77274555'),filters='snp_filter',attributes=c('refsnp_id','chr_name','chrom_start','chrom_end','allele',
-        'allele_1','minor_allele','minor_allele_freq','ensembl_gene_stable_id'),host=NULL) {
+mart.snpinfo = function(values=c('rs2075507', 'rs547420070', 'rs77274555'),filters='snp_filter',attributes=c('refsnp_id','validated','allele','allele_1','minor_allele','minor_allele_freq','clinical_significance','chr_name','chrom_start','chrom_end','ensembl_gene_stable_id'),host=NULL) {
     rs <- biomaRt::getBM(attributes=attributes, filters=filters, values=values, mart=mart.snp(host=host))
     
     # retrieve gene names with ensembl_gene_stable_id
@@ -108,7 +110,7 @@ mart.gene = function(host=NULL, biomart="ensembl", dataset="hsapiens_gene_ensemb
 
 #' retrieve human gene info from ensembl
 #' @param values  the actual input data values, ensembl_gene_id, ENSG00000118473, c('ENSG00000118473', 'ENSG00000162426'). If vector, should be the same id type
-#' @param filters the kind/type of your input data
+#' @param filters the kind/type of your input data, 'hgnc_symbol'
 #' \cr "ensembl_gene_id"(ENSG00000118473),"hgnc_id"(HGNC:25412),"entrezgene" (84251),"kegg_enzyme"(00010+1.1.1.1),"go_id"(GO:0030122),"ucsc"(uc057hhx.1) 
 #' @param attributes what to return
 #' @param host default 'www.ensembl.org'. Other eg, 'grch37.ensembl.org', 'May2017.archive.ensembl.org'. See all, run \code{\link{mart.list}}
@@ -135,7 +137,12 @@ mart.geneinfo = function(values=c('ENSG00000118473', 'ENSG00000162426'),filters=
 #' Ensembl has restricted the number of External references that you can select to 3. 
 #' ensembl_gene_id-->ensembl_gene_id still works, but if the id does not exist, returns empty data frame
 #' @export
-mart.converter = function(values=c('ENSG00000118473', 'ENSG00000162426'),filters="ensembl_gene_id",attributes=c("ensembl_gene_id","hgnc_symbol","hgnc_id","entrezgene"),host=NULL) {    
+mart.geneconv = function(values=c('ENSG00000118473', 'ENSG00000162426'),filters="ensembl_gene_id",attributes=c("ensembl_gene_id","hgnc_symbol","hgnc_id","entrezgene"),host=NULL) {    
     rs <- biomaRt::getBM(attributes=attributes, filters=filters, values=values, mart=mart.gene(host=host))
     return(rs)
 }
+
+
+mart.genesnps = function(){}
+# attributes=c("variation_name","validated","allele","minor_allele","minor_allele_freq","transcript_count","clinical_significance","ensembl_gene_id","chromosome_name","start_position","end_position","band","external_gene_name","description")
+# a=biomaRt::getBM(attributes=attributes, filters='hgnc_symbol', values='comt', mart=mart.gene())
