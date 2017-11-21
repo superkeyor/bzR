@@ -86,6 +86,7 @@ mart.snpinfo = function(values=c('rs2075507', 'rs547420070', 'rs77274555'),filte
             # combine results
             # even if rs2 is empty, join works fine
             rs=dplyr::left_join(rs,rs2,by=c('ensembl_gene_stable_id'='ensembl_gene_id'))
+            rs=ez.recol(rs,'hgnc_symbol, description first')
         } else {
             # simply create new columns
             rs[attributes]=''
