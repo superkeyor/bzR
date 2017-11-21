@@ -9,7 +9,7 @@ mart.geneinfo(values = c("COMT", "CRHR1"), filters = "hgnc_symbol",
   "chromosome_name", "start_position", "end_position"), host = NULL)
 }
 \arguments{
-\item{values}{the actual input data values, ensembl_gene_id, ENSG00000118473, c('ENSG00000118473', 'ENSG00000162426'). If vector, should be the same id type}
+\item{values}{the actual input data values, cannot be all empty, but partial empty/NA fine, ensembl_gene_id, ENSG00000118473, c('ENSG00000118473', 'ENSG00000162426'). If vector, should be the same id type}
 
 \item{filters}{row filters in the db, the kind/type of your input data, 'hgnc_symbol', "ensembl_gene_id"
 \cr "ensembl_gene_id"(ENSG00000118473),"hgnc_id"(HGNC:25412),"entrezgene" (84251),"kegg_enzyme"(00010+1.1.1.1),"go_id"(GO:0030122),"ucsc"(uc057hhx.1)}

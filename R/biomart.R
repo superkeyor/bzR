@@ -56,7 +56,7 @@ mart.snp = function(host=NULL, biomart="snp", dataset="hsapiens_snp", ...) {
 }
 
 #' retrieve human snp info from ensembl
-#' @param values  the actual input data values, rs number, eg, 'rs2075507', c('rs2075507', 'rs547420070', 'rs77274555'); to search archived synonymous rs number, use mart.snpinfo2
+#' @param values  the actual input data values, cannot be all empty, but partial empty/NA fine, rs number, eg, 'rs2075507', c('rs2075507', 'rs547420070', 'rs77274555'); to search archived synonymous rs number, use mart.snpinfo2
 #' @param filters row filters in the db, the kind/type of your input data
 #' @param attributes column attributes, what to return, eg, 'synonym_name'
 #' @param host default 'www.ensembl.org'. Other eg, 'grch37.ensembl.org', 'May2017.archive.ensembl.org'. See all, run \code{\link{mart.list}}
@@ -71,7 +71,7 @@ mart.snpinfo = function(values=c('rs2075507', 'rs547420070', 'rs77274555'),filte
     
     # retrieve gene names with ensembl_gene_stable_id
     if ('ensembl_gene_stable_id' %in% colnames(rs)) {
-        # getBM() values cannot be all empty (but partial empty is fine, e.g., c(‘rs123’,’’,’rs456'), 
+        # getBM() values cannot be all empty (but partial empty/NA is fine, e.g., c('rs123','','rs456', NA), 
         # but it can give out all empty results
         # (or nothing—but all desired column names returned as a data frame, i.e. empty data frame)
         # also by default, it removes duplicated rows when returning
@@ -112,7 +112,7 @@ mart.gene = function(host=NULL, biomart="ensembl", dataset="hsapiens_gene_ensemb
 }
 
 #' retrieve human gene info from ensembl
-#' @param values  the actual input data values, ensembl_gene_id, ENSG00000118473, c('ENSG00000118473', 'ENSG00000162426'). If vector, should be the same id type
+#' @param values  the actual input data values, cannot be all empty, but partial empty/NA fine, ensembl_gene_id, ENSG00000118473, c('ENSG00000118473', 'ENSG00000162426'). If vector, should be the same id type
 #' @param filters row filters in the db, the kind/type of your input data, 'hgnc_symbol', "ensembl_gene_id"
 #' \cr "ensembl_gene_id"(ENSG00000118473),"hgnc_id"(HGNC:25412),"entrezgene" (84251),"kegg_enzyme"(00010+1.1.1.1),"go_id"(GO:0030122),"ucsc"(uc057hhx.1) 
 #' @param attributes column attributes, what to return
@@ -129,7 +129,7 @@ mart.geneinfo = function(values=c('COMT', 'CRHR1'),filters="hgnc_symbol",attribu
 }
 
 #' convert from gene name to id, id to name, id to id
-#' @param values  the actual input data values, ensembl_gene_id, ENSG00000118473, c('ENSG00000118473', 'ENSG00000162426'). If vector, should be the same id type
+#' @param values  the actual input data values, cannot be all empty, but partial empty/NA fine, ensembl_gene_id, ENSG00000118473, c('ENSG00000118473', 'ENSG00000162426'). If vector, should be the same id type
 #' @param filters row filters in the db, from what id, 'hgnc_symbol'
 #' \cr "ensembl_gene_id"(ENSG00000118473),"hgnc_id"(HGNC:25412),"entrezgene" (84251),"kegg_enzyme"(00010+1.1.1.1),"go_id"(GO:0030122),"ucsc"(uc057hhx.1) 
 #' @param attributes column attributes, to what id(s), external max 3
@@ -146,7 +146,7 @@ mart.geneconv = function(values=c('ENSG00000118473', 'ENSG00000162426'),filters=
 }
 
 #' retrieves a gene's all snps
-#' @param values  the actual input data values, ensembl_gene_id, ENSG00000118473, c('ENSG00000118473', 'ENSG00000162426'). If vector, should be the same id type
+#' @param values  the actual input data values, cannot be all empty, but partial empty/NA fine, ensembl_gene_id, ENSG00000118473, c('ENSG00000118473', 'ENSG00000162426'). If vector, should be the same id type
 #' @param filters row filters in the db, input data type, 'hgnc_symbol'
 #' \cr "ensembl_gene_id"(ENSG00000118473),"hgnc_id"(HGNC:25412),"entrezgene" (84251),"kegg_enzyme"(00010+1.1.1.1),"go_id"(GO:0030122),"ucsc"(uc057hhx.1) 
 #' @param attributes column attributes, what to return

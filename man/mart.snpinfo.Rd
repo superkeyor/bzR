@@ -17,7 +17,7 @@ mart.snpinfo2(values = "rs2097603", filters = "snp_synonym_filter",
   "ensembl_gene_stable_id"), host = NULL)
 }
 \arguments{
-\item{values}{the actual input data values, rs number, eg, 'rs2075507', c('rs2075507', 'rs547420070', 'rs77274555'); to search archived synonymous rs number, use mart.snpinfo2}
+\item{values}{the actual input data values, cannot be all empty, but partial empty/NA fine, rs number, eg, 'rs2075507', c('rs2075507', 'rs547420070', 'rs77274555'); to search archived synonymous rs number, use mart.snpinfo2}
 
 \item{filters}{row filters in the db, the kind/type of your input data}
 
