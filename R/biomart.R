@@ -12,7 +12,8 @@
 mart.list <- function(what='snp',host=NULL,...) {
     if (!(what %in% c('hosts', 'marts', 'snp', 'gene'))) {
         ez.print("double check 'what', should be one of 'hosts', 'marts', 'snp', 'gene'")
-        return()
+        # invisible(return())
+        return
     }
 
     if (is.null(host)) {host='www.ensembl.org'}
