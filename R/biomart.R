@@ -71,6 +71,11 @@ mart.snp = function(host=NULL, biomart="snp", dataset="hsapiens_snp", ...) {
 #' In case multple filters are in use, the values argument requires a list of values where each position in the list corresponds to the position of the filters in the filters argument. eg,
 #' \cr filters=c("chr_name","start","end")
 #' \cr values=list(8,148350, 158612)
+#' \cr 
+#' \cr values=list(chr_name=17,start=c(43750137,43750172),end=c(43750137,43750172)) should retrieve 43750137:43750137, 43750172:43750172
+#' \cr but it seems to run for 43750137:43750172, which is not desired
+#' \cr in this case, the trick is to use filters="chromosomal_region" 
+#' \cr values=c('17:43750137:43750137','17:43750172:43750172')
 #' @export
 mart.snpinfo = function(values=c('rs2075507', 'rs547420070', 'rs77274555'),filters='snp_filter',attributes=c('refsnp_id','validated','allele','allele_1','minor_allele','minor_allele_freq','clinical_significance','chr_name','chrom_start','chrom_end','ensembl_gene_stable_id'),host=NULL) {
     rs <- biomaRt::getBM(attributes=attributes, filters=filters, values=values, mart=mart.snp(host=host))
@@ -129,6 +134,11 @@ mart.gene = function(host=NULL, biomart="ensembl", dataset="hsapiens_gene_ensemb
 #' In case multple filters are in use, the values argument requires a list of values where each position in the list corresponds to the position of the filters in the filters argument. eg,
 #' \cr filters=c("chr_name","start","end")
 #' \cr values=list(8,148350, 158612)
+#' \cr 
+#' \cr values=list(chr_name=17,start=c(43750137,43750172),end=c(43750137,43750172)) should retrieve 43750137:43750137, 43750172:43750172
+#' \cr but it seems to run for 43750137:43750172, which is not desired
+#' \cr in this case, the trick is to use filters="chromosomal_region" 
+#' \cr values=c('17:43750137:43750137','17:43750172:43750172')
 #' @export
 mart.geneinfo = function(values=c('COMT', 'CRHR1'),filters="hgnc_symbol",attributes=c("ensembl_gene_id","hgnc_symbol","description","chromosome_name","start_position","end_position"),host=NULL) {    
     rs <- biomaRt::getBM(attributes=attributes, filters=filters, values=values, mart=mart.gene(host=host))
