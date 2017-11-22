@@ -4,15 +4,17 @@
 \alias{bz.install}
 \title{Install a package from bioconductor}
 \usage{
-bz.install(pkg)
+bz.install(pkg, suppressUpdates = TRUE, ...)
 }
 \arguments{
 \item{pkg}{eg, 'biomaRt'}
+
+\item{suppressUpdates}{if TRUE, do not ask to update other old packages and do not update them; if FALSE, will ask to choose}
 }
 \value{
 returns nothing
 }
 \description{
-internally source/install biocLite.R, wrapper of biocLite(pkg)
+internally source/install biocLite.R, wrapper of \code{\link[BiocInstaller]{biocLite}}
 }
 
