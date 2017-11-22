@@ -10,6 +10,11 @@
 #' @param host default 'www.ensembl.org'. Other eg, 'grch37.ensembl.org', 'May2017.archive.ensembl.org'. See all, run \code{\link{mart.list}}
 #' @export
 mart.list <- function(what='snp',host=NULL,...) {
+    if (!(what %in% c('hosts', 'marts', 'snp', 'gene'))) {
+        ez.print("double check 'what', should be one of 'hosts', 'marts', 'snp', 'gene'")
+        return()
+    }
+
     if (is.null(host)) {host='www.ensembl.org'}
 
     if (what=='hosts') {
