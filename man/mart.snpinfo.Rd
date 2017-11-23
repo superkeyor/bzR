@@ -39,8 +39,9 @@ In case multple filters are in use, the values argument requires a list of value
 \cr for multiple regions, use: 
 \cr filters="chromosomal_region" 
 \cr values=c('17:43750137:43750137','17:43750172:43750172')
-\cr          values=list(chr_name=17,start=c(43750137,43750172),end=c(43750137,43750172)) 
-\cr          should retrieve 43750137:43750137, 43750172:43750172
-\cr          but it seems to run for 43750137:43750172, which is not desired
+\cr
+\cr values=list(chr_name=17,start=c(43750137,43750172),end=c(43750137,43750172)) 
+\cr should retrieve 43750137:43750137, 43750172:43750172
+\cr but it seems to run for 43750137:43750172, which is not desired
 }
 
