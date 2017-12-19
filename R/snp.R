@@ -12,7 +12,7 @@ snp.recode = function(x, cols=NULL, recodes=c(0,1,2)) {
         bases = strsplit(paste(na.omit(x), collapse=""),"")[[1]]
         if (length(unique(bases))>2) {
           # already in the desired formats
-          if (all(is.element(unique(bases),as.character(recodes)))) {return(x)}
+          # if (all(is.element(unique(bases),as.character(recodes)))) {return(x)}
             
           if (is.null(cols)) stop(sprintf('input not biallelic: %s', toString(unique(bases),width = 300)))
           if (!is.null(cols)) stop(sprintf('col %s not biallelic: %s', cols, toString(unique(bases),width = 300)))
