@@ -8,7 +8,8 @@
 #' @export
 snp.recode = function(x, cols=NULL, recodes=c(0,1,2)) {
     if (!is.data.frame(x)){
-        bases = strsplit(paste(as.character(na.omit(x)), collapse=""),"")[[1]]
+        x = ez.2char(x)
+        bases = strsplit(paste(na.omit(x), collapse=""),"")[[1]]
         if (length(unique(bases))>2) {
           if (is.null(cols)) stop(sprintf('input not biallelic: %s', toString(unique(bases),width = 300)))
           if (!is.null(cols)) stop(sprintf('col %s not biallelic: %s', cols, toString(unique(bases),width = 300)))
