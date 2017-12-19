@@ -9,7 +9,10 @@
 snp.recode = function(x, cols=NULL, recodes=c(0,1,2)) {
     if (!is.data.frame(x)){
         bases = strsplit(paste(as.character(na.omit(x)), collapse=""),"")[[1]]
-        if (length(unique(bases))>2) {stop(sprintf('input not biallelic'))}
+        if (length(unique(bases))>2) {
+          if (is.null(cols)) stop(sprintf('input not biallelic: %s', toString(unique(bases),width = 300)))
+          if (!is.null(cols)) stop(sprintf('col %s not biallelic: %s', cols, toString(unique(bases),width = 300)))
+        }
         freqs = table(bases)
         minor = names(freqs)[which(freqs==min(freqs))][1]  # [1] in case 50%, 50%
         major = setdiff(names(freqs),minor)
@@ -28,9 +31,9 @@ snp.recode = function(x, cols=NULL, recodes=c(0,1,2)) {
     if (is.data.frame(x) & !is.null(cols)) {
         cols=ez.selcol(x,cols)
         for (col in cols) {
-            df[[col]]=snp.recode(df[[col]],cols=NULL,recodes=recodes)
+            x[[col]]=snp.recode(x[[col]],cols=col,recodes=recodes)
         }
-        result=df
+        result=x
     }
     return(result)
 }
