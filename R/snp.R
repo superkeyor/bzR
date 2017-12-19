@@ -11,6 +11,9 @@ snp.recode = function(x, cols=NULL, recodes=c(0,1,2)) {
         x = ez.2char(x)
         bases = strsplit(paste(na.omit(x), collapse=""),"")[[1]]
         if (length(unique(bases))>2) {
+          # already in the desired formats
+          if (all(is.element(unique(bases),as.character(recodes)))) {return(x)}
+            
           if (is.null(cols)) stop(sprintf('input not biallelic: %s', toString(unique(bases),width = 300)))
           if (!is.null(cols)) stop(sprintf('col %s not biallelic: %s', cols, toString(unique(bases),width = 300)))
         }
@@ -21,10 +24,15 @@ snp.recode = function(x, cols=NULL, recodes=c(0,1,2)) {
         AB = paste0(minor,major)
         BA = paste0(major,minor)
         BB = paste0(major,major)
-        x[which(x==AA)] <- recodes[1] 
-        x[which(x==AB)] <- recodes[2]
-        x[which(x==BA)] <- recodes[2] 
-        x[which(x==BB)] <- recodes[3] 
+        # save the ind first to avoid recursive replacing 
+        ind.AA=which(x==AA)
+        ind.AB=which(x==AB)
+        ind.BA=which(x==BA)
+        ind.BB=which(x==BB)
+        x[ind.AA] <- recodes[1] 
+        x[ind.AB] <- recodes[2]
+        x[ind.BA] <- recodes[2] 
+        x[ind.BB] <- recodes[3] 
         x <- utils::type.convert(x, as.is = TRUE)
         if (is.character(x)) x=factor(x)
         result=x
