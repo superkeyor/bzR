@@ -46,3 +46,21 @@ snp.recode = function(x, cols=NULL, recodes=c(0,1,2)) {
     }
     return(result)
 }
+
+#' the cols that are not biallelic
+#' @description the cols that are not biallelic
+#' @param df df
+#' @param cols evaluated as cols=ez.selcol(x,cols). NULL=all cols
+#' @return returns a vector of names of column that is not biallelic
+#' @export
+snp.isnotbiallelic = function(df, cols=NULL) {
+    cols=ez.selcol(df,cols)
+    result=character()
+    for (col in cols) {
+        x = df[[col]]
+        x = ez.2char(x)
+        bases = strsplit(paste(na.omit(x), collapse=""),"")[[1]]
+        if (length(unique(bases))>2) {result=c(result,col)}
+    }
+    return(result)
+}
