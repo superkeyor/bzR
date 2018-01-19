@@ -22,4 +22,3 @@ recode snps
 \note{
 assume biallelic, otherwise error. minor/major bases are calculated based on the actual input data
 }
-

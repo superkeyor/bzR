@@ -17,4 +17,3 @@ returns a vector of names of column that is not biallelic
 \description{
 the cols that are not biallelic
 }
-

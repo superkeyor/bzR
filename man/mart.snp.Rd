@@ -12,4 +12,3 @@ mart.snp(host = NULL, biomart = "snp", dataset = "hsapiens_snp", ...)
 \description{
 return a mart object representing snp:hsapiens_snp
 }
-

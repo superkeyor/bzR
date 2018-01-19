@@ -17,4 +17,3 @@ returns nothing
 \description{
 internally source/install biocLite.R, wrapper of \code{\link[BiocInstaller]{biocLite}}
 }
-

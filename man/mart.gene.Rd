@@ -13,4 +13,3 @@ mart.gene(host = NULL, biomart = "ensembl",
 \description{
 return a mart object representing ensembl:hsapiens_gene_ensembl
 }
-

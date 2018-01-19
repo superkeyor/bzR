@@ -14,4 +14,3 @@ mart.list(what = "snp", host = NULL, ...)
 \description{
 Lists available archived versions of Ensembl (hosts), marts, snp attributes/filters, gene attributes/filters
 }
-

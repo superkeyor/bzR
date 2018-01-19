@@ -26,4 +26,3 @@ returns a data frame
 \description{
 retrieves a gene's all snps
 }
-
