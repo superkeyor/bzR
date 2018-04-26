@@ -2,11 +2,11 @@
 #' @description recode snps
 #' @param x df or vector (char or factor of char)
 #' @param cols evaluated as cols=ez.selcol(x,cols), ignored if x is a vector
-#' @param recodes vector with three elements corresponding to (minor-minor, minor-major or major-minor, major-major). Could be c(0,1,2), c(-1,0,1), c(1,2,3), c(0,1,1), c(1,0,0), c('AA','AB','BB')
+#' @param recodes vector with three elements corresponding to (minor-minor, minor-major or major-minor, major-major). Could be c(0,1,2), c(2,1,0), c(-1,0,1), c(1,2,3), c(0,1,1), c(1,0,0), c('AA','AB','BB')
 #' @return returns a new df or vector. Regardless of input data type, if recodes are number, then the returned is also numeric; if recodes are char, then always factor of char.
 #' @note assume biallelic, otherwise error. minor/major bases are calculated based on the actual input data
 #' @export
-snp.recode = function(x, cols=NULL, recodes=c(0,1,2)) {
+snp.recode = function(x, cols=NULL, recodes=c(2,1,0)) {
     if (!is.data.frame(x)){
         x = ez.2char(x)
         bases = strsplit(paste(na.omit(x), collapse=""),"")[[1]]
