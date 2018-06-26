@@ -7,7 +7,7 @@
 
 #' Lists available archived versions of Ensembl (hosts), marts, snp attributes/filters, gene attributes/filters
 #' @param what one of 'hosts', 'marts', 'snp', 'gene'
-#' @param host default 'www.ensembl.org'. Other eg, 'grch37.ensembl.org', 'May2017.archive.ensembl.org'. See all, run \code{\link{mart.list}}
+#' @param host default 'www.ensembl.org'. Other eg, 'grch37.ensembl.org', 'aug2017.archive.ensembl.org'. See all, run \code{\link{mart.list}}
 #' @export
 mart.list <- function(what='snp',host=NULL,...) {
     if (!(what %in% c('hosts', 'marts', 'snp', 'gene'))) {
@@ -53,7 +53,7 @@ mart.list <- function(what='snp',host=NULL,...) {
 }
 
 #' return a mart object representing snp:hsapiens_snp
-#' @param host default 'www.ensembl.org'. Other eg, 'grch37.ensembl.org', 'May2017.archive.ensembl.org'. See all, run \code{\link{mart.list}}
+#' @param host default 'www.ensembl.org'. Other eg, 'grch37.ensembl.org', 'aug2017.archive.ensembl.org'. See all, run \code{\link{mart.list}}
 #' @export
 mart.snp = function(host=NULL, biomart="snp", dataset="hsapiens_snp", ...) {
     if (is.null(host)) {host='www.ensembl.org'}
@@ -64,7 +64,7 @@ mart.snp = function(host=NULL, biomart="snp", dataset="hsapiens_snp", ...) {
 #' @param values  the actual input data values, cannot be all empty, but partial empty/NA fine, rs number, eg, 'rs2075507', c('rs2075507', 'rs547420070', 'rs77274555'); to search archived synonymous rs number, use mart.snpinfo2
 #' @param filters row filters in the db, the kind/type of your input data
 #' @param attributes column attributes, what to return, eg, 'synonym_name'
-#' @param host default 'www.ensembl.org'. Other eg, 'grch37.ensembl.org', 'May2017.archive.ensembl.org'. See all, run \code{\link{mart.list}}
+#' @param host default 'www.ensembl.org'. Other eg, 'grch37.ensembl.org', 'aug2017.archive.ensembl.org'. See all, run \code{\link{mart.list}}
 #' @return returns a data frame
 #' @note
 #' In case multple filters are in use, the values argument requires a list of values where each position in the list corresponds to the position of the filters in the filters argument. eg,
@@ -118,7 +118,7 @@ mart.snpinfo2 = function(values='rs2097603',filters='snp_synonym_filter',attribu
 }
 
 #' return a mart object representing ensembl:hsapiens_gene_ensembl
-#' @param host default 'www.ensembl.org'. Other eg, 'grch37.ensembl.org', 'May2017.archive.ensembl.org'. See all, run \code{\link{mart.list}}
+#' @param host default 'www.ensembl.org'. Other eg, 'grch37.ensembl.org', 'aug2017.archive.ensembl.org'. See all, run \code{\link{mart.list}}
 #' @export
 mart.gene = function(host=NULL, biomart="ensembl", dataset="hsapiens_gene_ensembl", ...) {
     if (is.null(host)) {host='www.ensembl.org'}
@@ -130,7 +130,7 @@ mart.gene = function(host=NULL, biomart="ensembl", dataset="hsapiens_gene_ensemb
 #' @param filters row filters in the db, the kind/type of your input data, 'hgnc_symbol', "ensembl_gene_id"
 #' \cr "ensembl_gene_id"(ENSG00000118473),"hgnc_id"(HGNC:25412),"entrezgene" (84251),"kegg_enzyme"(00010+1.1.1.1),"go_id"(GO:0030122),"ucsc"(uc057hhx.1) 
 #' @param attributes column attributes, what to return
-#' @param host default 'www.ensembl.org'. Other eg, 'grch37.ensembl.org', 'May2017.archive.ensembl.org'. See all, run \code{\link{mart.list}}
+#' @param host default 'www.ensembl.org'. Other eg, 'grch37.ensembl.org', 'aug2017.archive.ensembl.org'. See all, run \code{\link{mart.list}}
 #' @return returns a data frame
 #' @note
 #' In case multple filters are in use, the values argument requires a list of values where each position in the list corresponds to the position of the filters in the filters argument. eg,
@@ -155,7 +155,7 @@ mart.geneinfo = function(values=c('COMT', 'CRHR1'),filters="hgnc_symbol",attribu
 #' @param filters row filters in the db, from what id, 'hgnc_symbol'
 #' \cr "ensembl_gene_id"(ENSG00000118473),"hgnc_id"(HGNC:25412),"entrezgene" (84251),"kegg_enzyme"(00010+1.1.1.1),"go_id"(GO:0030122),"ucsc"(uc057hhx.1) 
 #' @param attributes column attributes, to what id(s), external max 3
-#' @param host default 'www.ensembl.org'. Other eg, 'grch37.ensembl.org', 'May2017.archive.ensembl.org'. See all, run \code{\link{mart.list}}
+#' @param host default 'www.ensembl.org'. Other eg, 'grch37.ensembl.org', 'aug2017.archive.ensembl.org'. See all, run \code{\link{mart.list}}
 #' @return returns a data frame
 #' @note
 #' To allow BioMart to return results in a reasonable amound of time, 
@@ -172,7 +172,7 @@ mart.geneconv = function(values=c('ENSG00000118473', 'ENSG00000162426'),filters=
 #' @param filters row filters in the db, input data type, 'hgnc_symbol'
 #' \cr "ensembl_gene_id"(ENSG00000118473),"hgnc_id"(HGNC:25412),"entrezgene" (84251),"kegg_enzyme"(00010+1.1.1.1),"go_id"(GO:0030122),"ucsc"(uc057hhx.1) 
 #' @param attributes column attributes, what to return
-#' @param host default 'www.ensembl.org'. Other eg, 'grch37.ensembl.org', 'May2017.archive.ensembl.org'. See all, run \code{\link{mart.list}}
+#' @param host default 'www.ensembl.org'. Other eg, 'grch37.ensembl.org', 'aug2017.archive.ensembl.org'. See all, run \code{\link{mart.list}}
 #' @return returns a data frame
 #' @export
 mart.genesnps = function(values='CRHR1',filters='hgnc_symbol',attributes=c("variation_name","validated","allele","minor_allele","minor_allele_freq","transcript_count","clinical_significance","ensembl_gene_id","chromosome_name","start_position","end_position","band","external_gene_name","description"),host=NULL) {

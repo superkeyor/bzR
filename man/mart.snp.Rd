@@ -7,7 +7,7 @@
 mart.snp(host = NULL, biomart = "snp", dataset = "hsapiens_snp", ...)
 }
 \arguments{
-\item{host}{default 'www.ensembl.org'. Other eg, 'grch37.ensembl.org', 'May2017.archive.ensembl.org'. See all, run \code{\link{mart.list}}}
+\item{host}{default 'www.ensembl.org'. Other eg, 'grch37.ensembl.org', 'aug2017.archive.ensembl.org'. See all, run \code{\link{mart.list}}}
 }
 \description{
 return a mart object representing snp:hsapiens_snp

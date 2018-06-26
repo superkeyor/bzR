@@ -16,7 +16,7 @@ mart.geneinfo(values = c("COMT", "CRHR1"), filters = "hgnc_symbol",
 
 \item{attributes}{column attributes, what to return}
 
-\item{host}{default 'www.ensembl.org'. Other eg, 'grch37.ensembl.org', 'May2017.archive.ensembl.org'. See all, run \code{\link{mart.list}}}
+\item{host}{default 'www.ensembl.org'. Other eg, 'grch37.ensembl.org', 'aug2017.archive.ensembl.org'. See all, run \code{\link{mart.list}}}
 }
 \value{
 returns a data frame

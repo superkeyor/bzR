@@ -9,7 +9,7 @@ mart.list(what = "snp", host = NULL, ...)
 \arguments{
 \item{what}{one of 'hosts', 'marts', 'snp', 'gene'}
 
-\item{host}{default 'www.ensembl.org'. Other eg, 'grch37.ensembl.org', 'May2017.archive.ensembl.org'. See all, run \code{\link{mart.list}}}
+\item{host}{default 'www.ensembl.org'. Other eg, 'grch37.ensembl.org', 'aug2017.archive.ensembl.org'. See all, run \code{\link{mart.list}}}
 }
 \description{
 Lists available archived versions of Ensembl (hosts), marts, snp attributes/filters, gene attributes/filters
