@@ -4,11 +4,15 @@
 \alias{mart.genesnps}
 \title{retrieves a gene's all snps}
 \usage{
-mart.genesnps(values = "CRHR1", filters = "hgnc_symbol",
+mart.genesnps(
+  values = "CRHR1",
+  filters = "hgnc_symbol",
   attributes = c("variation_name", "validated", "allele", "minor_allele",
-  "minor_allele_freq", "transcript_count", "clinical_significance",
-  "ensembl_gene_id", "chromosome_name", "start_position", "end_position",
-  "band", "external_gene_name", "description"), host = NULL)
+    "minor_allele_freq", "transcript_count", "clinical_significance", "ensembl_gene_id",
+    "chromosome_name", "start_position", "end_position", "band", "external_gene_name",
+    "description"),
+  host = NULL
+)
 }
 \arguments{
 \item{values}{the actual input data values, cannot be all empty, but partial empty/NA fine, ensembl_gene_id, ENSG00000118473, c('ENSG00000118473', 'ENSG00000162426'). If vector, should be the same id type}

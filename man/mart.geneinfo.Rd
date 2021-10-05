@@ -4,9 +4,13 @@
 \alias{mart.geneinfo}
 \title{retrieve human gene info from ensembl}
 \usage{
-mart.geneinfo(values = c("COMT", "CRHR1"), filters = "hgnc_symbol",
-  attributes = c("ensembl_gene_id", "hgnc_symbol", "description",
-  "chromosome_name", "start_position", "end_position"), host = NULL)
+mart.geneinfo(
+  values = c("COMT", "CRHR1"),
+  filters = "hgnc_symbol",
+  attributes = c("ensembl_gene_id", "hgnc_symbol", "description", "chromosome_name",
+    "start_position", "end_position"),
+  host = NULL
+)
 }
 \arguments{
 \item{values}{the actual input data values, cannot be all empty, but partial empty/NA fine, ensembl_gene_id, ENSG00000118473, c('ENSG00000118473', 'ENSG00000162426'). If vector, should be the same id type}

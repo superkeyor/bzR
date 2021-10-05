@@ -4,8 +4,12 @@
 \alias{mart.gene}
 \title{return a mart object representing ensembl:hsapiens_gene_ensembl}
 \usage{
-mart.gene(host = NULL, biomart = "ensembl",
-  dataset = "hsapiens_gene_ensembl", ...)
+mart.gene(
+  host = NULL,
+  biomart = "ensembl",
+  dataset = "hsapiens_gene_ensembl",
+  ...
+)
 }
 \arguments{
 \item{host}{default 'www.ensembl.org'. Other eg, 'grch37.ensembl.org', 'aug2017.archive.ensembl.org'. See all, run \code{\link{mart.list}}}

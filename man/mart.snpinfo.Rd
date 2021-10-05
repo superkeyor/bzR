@@ -5,16 +5,22 @@
 \alias{mart.snpinfo2}
 \title{retrieve human snp info from ensembl}
 \usage{
-mart.snpinfo(values = c("rs2075507", "rs547420070", "rs77274555"),
-  filters = "snp_filter", attributes = c("refsnp_id", "validated", "allele",
-  "allele_1", "minor_allele", "minor_allele_freq", "clinical_significance",
-  "chr_name", "chrom_start", "chrom_end", "ensembl_gene_stable_id"),
-  host = NULL)
+mart.snpinfo(
+  values = c("rs2075507", "rs547420070", "rs77274555"),
+  filters = "snp_filter",
+  attributes = c("refsnp_id", "validated", "allele", "allele_1", "minor_allele",
+    "minor_allele_freq", "clinical_significance", "chr_name", "chrom_start", "chrom_end",
+    "ensembl_gene_stable_id"),
+  host = NULL
+)
 
-mart.snpinfo2(values = "rs2097603", filters = "snp_synonym_filter",
-  attributes = c("refsnp_id", "chr_name", "chrom_start", "chrom_end",
-  "allele", "allele_1", "minor_allele", "minor_allele_freq",
-  "ensembl_gene_stable_id"), host = NULL)
+mart.snpinfo2(
+  values = "rs2097603",
+  filters = "snp_synonym_filter",
+  attributes = c("refsnp_id", "chr_name", "chrom_start", "chrom_end", "allele",
+    "allele_1", "minor_allele", "minor_allele_freq", "ensembl_gene_stable_id"),
+  host = NULL
+)
 }
 \arguments{
 \item{values}{the actual input data values, cannot be all empty, but partial empty/NA fine, rs number, eg, 'rs2075507', c('rs2075507', 'rs547420070', 'rs77274555'); to search archived synonymous rs number, use mart.snpinfo2}

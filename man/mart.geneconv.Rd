@@ -4,9 +4,12 @@
 \alias{mart.geneconv}
 \title{convert from gene name to id, id to name, id to id}
 \usage{
-mart.geneconv(values = c("ENSG00000118473", "ENSG00000162426"),
-  filters = "ensembl_gene_id", attributes = c("ensembl_gene_id",
-  "hgnc_symbol", "hgnc_id", "entrezgene"), host = NULL)
+mart.geneconv(
+  values = c("ENSG00000118473", "ENSG00000162426"),
+  filters = "ensembl_gene_id",
+  attributes = c("ensembl_gene_id", "hgnc_symbol", "hgnc_id", "entrezgene"),
+  host = NULL
+)
 }
 \arguments{
 \item{values}{the actual input data values, cannot be all empty, but partial empty/NA fine, ensembl_gene_id, ENSG00000118473, c('ENSG00000118473', 'ENSG00000162426'). If vector, should be the same id type}
